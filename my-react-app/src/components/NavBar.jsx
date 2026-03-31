@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function BasicExample() {
+function NavBar1() {
     return (
         <Navbar expand="lg" className="custom-navbar" fixed="top" variant="dark">
             <Container fluid>
@@ -24,4 +24,4 @@ function BasicExample() {
     );
 }
 
-export default BasicExample;
+export default NavBar1;
