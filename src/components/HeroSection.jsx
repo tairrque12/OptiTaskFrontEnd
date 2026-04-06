@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom';
 function HeroSection() {
     return (
         <section id="home" className="hero-section">
@@ -22,7 +23,8 @@ function HeroSection() {
                     On-Demand Humanoid Robots For Home, Businesses, & Everyday Life.
                 </p>
 
-                <button className="hero-button">Request A Robot</button>
+                <Link to="/request-hero" style={{textDecoration: "none"}}
+                      className="hero-button">Request A Robot &nbsp; →</Link>
             </div>
         </section>
     );

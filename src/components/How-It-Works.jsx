@@ -1,68 +1,33 @@
-import Card from 'react-bootstrap/Card';
-
-function HowItWorks() {
+import {Link} from 'react-router-dom';
+function HeroSection() {
     return (
+        <section id="figure03" className="hero-section">
+            <video
+                className="hero-video"
+                autoPlay
+                muted
+                loop
+                playsInline
+            >
+                <source src="/videos/Figure03.mp4" type="video/mp4" />
 
-        <section id="how-it-works" className="how-section">
-            {/* Title */}
-            <p className="how-label">How OptiTask Works</p>
+            </video>
 
+            <div className="hero-overlay"></div>
 
-            {/* Card Headings */}
-            <h2 className="how-heading">Request &nbsp; → &nbsp; Match &nbsp; → &nbsp; Deploy</h2>
-            <div className="how-cards">
+            <div className="hero-content">
+                <p className="hero-kicker"></p>
+                <h1>Figure 03</h1>
 
-                {/* Request Card */}
-                <Card className="how-card">
-                    <Card.Img variant="top" src="/images/request.png" />
-                    <Card.Body>
-                        <p className="how-step-number">1</p>
-                        <Card.Title>Request</Card.Title>
-                        <Card.Text>
-                            Choose A Task. Set The Destination.
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
+                <p className="hero-subtext">
+                    The Future Of Home-Help Is Here.
+                </p>
 
-
-                {/* Arrows Between Cards */}
-                <div className="how-arrow-line">
-                    <div className="how-arrow-connector"></div>
-                </div>
-
-
-                {/* Match Card */}
-                <Card className="how-card">
-                    <Card.Img variant="top" src="/images/Match.png" />
-                    <Card.Body>
-                        <p className="how-step-number">2</p>
-                        <Card.Title>Match</Card.Title>
-                        <Card.Text>
-                            OptiTask Assigns The Robot Instantly.
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
-                {/* Arrow Between Cards */}
-                <div className="how-arrow-line">
-                    <div className="how-arrow-connector"></div>
-                </div>
-
-                {/* Deploy Card */}
-                <Card className="how-card">
-                    <Card.Img variant="top" src="/images/deploy.png" />
-                    <Card.Body>
-                        <p className="how-step-number">3</p>
-                        <Card.Title>Deploy</Card.Title>
-                        <Card.Text>
-                            Your Robot Arrives Ready To Work.
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-
+                <Link to="/request-hero" style={{textDecoration: "none"}}
+                      className="hero-button">Explore Figure 03 &nbsp; →</Link>
             </div>
         </section>
     );
 }
 
-export default HowItWorks;
+export default HeroSection;

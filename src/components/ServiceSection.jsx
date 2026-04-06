@@ -1,7 +1,8 @@
+import {Link} from 'react-router-dom';
 function ServicesSection() {
     return (
 
-        <section id="services" className="services-section">
+        <section id="optimus" className="services-section">
             <video
                 className="services-video"
                 autoPlay
@@ -15,11 +16,13 @@ function ServicesSection() {
             <div className="services-overlay"></div>
 
             <div className="services-content">
-                <h2 className="services-heading">OptiTask Services</h2>
+                <h2 className="services-heading">Tesla Optimus</h2>
                 <p className="services-subtext">
-                    On-Demand Humanoid Robots For Home, Business, & Everyday Life.
+                    Optimus. The Future Of On-Demand Work.
                 </p>
-                <button className="services-button">Explore Services &nbsp; →</button>
+
+                <Link to="/services-lp" style={{textDecoration: "none"}}
+                      className="services-button">Explore Optimus &nbsp; →</Link>
             </div>
         </section>
     );

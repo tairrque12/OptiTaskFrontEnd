@@ -1,20 +1,21 @@
-
 import HeroSection from "../components/HeroSection.jsx";
 import ServiceSection from "../components/ServiceSection.jsx";
 import HowItWorks from "../components/How-It-Works.jsx";
 import CallToAction from "../components/CTA.jsx";
-import BasicExample from "../components/NavBar.jsx";
+import NavBar1 from "../components/NavBar.jsx";
+
 
 
 
 function LandingPage() {
     return (
         <>
-            <BasicExample/>
+            <NavBar1/>
             <HeroSection />
             <ServiceSection/>
             <HowItWorks/>
             <CallToAction/>
+
 
         </>
     );

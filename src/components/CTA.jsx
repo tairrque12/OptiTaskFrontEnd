@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 function CallToAction() {
     return (
         <section id="request" className="cta-section">
@@ -16,9 +17,11 @@ function CallToAction() {
             <div className="cta-content">
                 <h2 className="cta-heading">OptiTask</h2>
                 <p className="cta-subtext">
-                    The Future Is Autonomous.
+                    Available Now.
                 </p>
-                <button className="cta-button">Request A Robot &nbsp; →</button>
+
+                <Link to="/request-cta" style={{textDecoration: "none"}}
+                      className="cta-button">Request A Robot &nbsp; →</Link>
             </div>
         </section>
     );
