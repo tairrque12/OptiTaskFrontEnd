@@ -6,6 +6,10 @@ function SignUpPage({ onSignUp }) {
     const [email, setEmail] = useState('');
 
     function handleSubmit() {
+        if (!firstName || !lastName || !email) {
+            alert('Please fill out all fields');
+            return;
+        }
         onSignUp();
     }
 
