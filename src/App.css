@@ -797,3 +797,18 @@ html, body, #root {
     background: #C9A84C;
     color: #000;
 }
+/* Add to SignUpPage.css */
+
+.error-message {
+    color: #ff4444;
+    font-size: 0.875rem;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+}
+
+.signup-input.error {
+    border: 2px solid #ff4444;
+}

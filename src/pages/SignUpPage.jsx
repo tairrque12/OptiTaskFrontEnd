@@ -1,17 +1,54 @@
 import { useState } from 'react';
+import * as Yup from 'yup';
 
 function SignUpPage({ onSignUp }) {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [errors, setErrors] = useState('')
 
-    function handleSubmit() {
-        if (!firstName || !lastName || !email) {
-            alert('Please fill out all fields');
-            return;
+
+    // Defines Validation Schema - The RuleBook
+    const validationSchema = Yup.object({
+        firstName: Yup.string()
+            .min(2, 'First name must be at least 2 characters')
+            .required('First name is required'),
+        lastName: Yup.string()
+            .min(2, 'Last name must be at least 2 characters')
+            .required('Last name is required'),
+        email: Yup.string()
+            .email('Invalid email address')
+            .required('Email is required')
+    });
+
+    async function handleSubmit() {
+        // Clears Any Previous Errors
+        setErrors({});
+
+        try {
+            // Validate all fields
+            await validationSchema.validate(
+                { firstName, lastName, email },
+                { abortEarly: false } // Collect All The Errors Not Just The First One.
+            );
+
+            // If All Validation Is Good, This Will Advance You To Next Page
+            onSignUp({ firstName, lastName, email });
+
+
+       // This Catches All Errors.
+        } catch (validationErrors) {
+            const formattedErrors = {};
+
+            //For Each Loop That Loops Through All Errors.
+            validationErrors.inner.forEach((error) => {
+                formattedErrors[error.path] = error.message;
+            });
+            setErrors(formattedErrors);
+            //This Sets The Errors For The JSX.
         }
-        onSignUp();
     }
+
 
     return (
         <div className="signup-page">
@@ -20,8 +57,7 @@ function SignUpPage({ onSignUp }) {
             </video>
 
             <div className="signup-overlay">
-                <h1 className="signup-title">Reserve Your Access</h1>
-                <h6 className="signup-subsection">Premium Humanoid Robot Rentals. Launching Soon</h6>
+                <h1 className="signup-title">Create An OptiTask Account</h1>
 
                 <input
                     type="text"
@@ -30,6 +66,8 @@ function SignUpPage({ onSignUp }) {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                 />
+                {/* Error Message */}
+                {errors.firstName && <p className="error-message">{errors.firstName}</p>}
 
                 <input
                     type="text"
@@ -38,6 +76,9 @@ function SignUpPage({ onSignUp }) {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                 />
+                {/* Error Message */}
+                {errors.lastName && <p className="error-message">{errors.lastName}</p>}
+
 
                 <input
                     type="email"
@@ -46,8 +87,11 @@ function SignUpPage({ onSignUp }) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
+                {/* Error Message */}
+                {errors.email && <p className="error-message">{errors.email}</p>}
 
-                <button className="signup-button" onClick={handleSubmit}>Join WaitList</button>
+
+                <button className="signup-button" onClick={handleSubmit}>Create Account</button>
             </div>
         </div>
     );
