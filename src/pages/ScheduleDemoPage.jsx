@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import Card from 'react-bootstrap/Card';
 
-function ScheduleDemoPage({onScheduledDemo}){
+function ScheduleDemoPage({onScheduledDemo}) {
 
     //Validation Schema - The RuleBook
     const validationSchema = Yup.object({
@@ -14,7 +15,7 @@ function ScheduleDemoPage({onScheduledDemo}){
         email: Yup.string()
             .email('Invalid Email Address')
             .optional(),
-        phoneNumber:Yup.string()
+        phoneNumber: Yup.string()
             .matches(/^[0-9]{10}$/, 'Phone number must be 10 digits')
             .required('Phone Number Is Required'),
         location: Yup.string()
@@ -27,7 +28,7 @@ function ScheduleDemoPage({onScheduledDemo}){
     })
 
     // This Validates Form
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const {register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(validationSchema)
     });
 
@@ -36,16 +37,18 @@ function ScheduleDemoPage({onScheduledDemo}){
         onScheduledDemo(data);
     }
 
-    return(
-        <div className="demo-page">
+    return (
+            <div className="demo-page">
             <h1 className="demo-title">Schedule A Demo</h1>
             <p className="demo-subtext">Experience Both Tesla Optimus & Figure 03 Humanoid Robots </p>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
 
             {/* FIRST NAME INPUT */}
             <input
             type="text"
             placeholder="First Name"
-            className={`signup-input ${errors.firstName ? 'error' : ''}`}
+            className={`demo-signup ${errors.firstName ? 'error' : ''}`}
             {...register('firstName')}
             />
             {errors.firstName && <p className="error-message">{errors.firstName.message}</p>}
@@ -54,7 +57,7 @@ function ScheduleDemoPage({onScheduledDemo}){
             <input
             type="text"
             placeholder="Last Name"
-            className={`signup-input ${errors.lastName ? 'error' : ''}`}
+            className={`demo-signup ${errors.lastName ? 'error' : ''}`}
             {...register('lastName')}
             />
             {errors.lastName && <p className="error-message">{errors.lastName.message}</p>}
@@ -63,7 +66,7 @@ function ScheduleDemoPage({onScheduledDemo}){
             <input
             type="email"
             placeholder="Email Address"
-            className={`signup-input ${errors.email ? 'error' : ''}`}
+            className={`demo-signup ${errors.email ? 'error' : ''}`}
             {...register('email')}
             />
             {errors.email && <p className="error-message">{errors.email.message}</p>}
@@ -71,18 +74,18 @@ function ScheduleDemoPage({onScheduledDemo}){
             {/* Phone Number Input */}
             <input
             type="tel"
-            placeholder="Phone Number"
-            className={`signup-input ${errors.phoneNumber ? 'error' : ''}`}
+            placeholder="Enter Phone Number"
+            className={`demo-signup ${errors.phoneNumber ? 'error' : ''}`}
             {...register('phoneNumber')}
             />
             {errors.phoneNumber && <p className="error-message">{errors.phoneNumber.message}</p>}
 
             {/* Location */}
             <select
-            className={`signup-input ${errors.location? 'error' : ''}`}
+            className={`demo-signup${errors.location? 'error' : ''}`}
             {...register('location')}
             >
-            <option value="">Select Location</option>
+            <option value="">Select OptiTask Location</option>
             <option value="value1">Label 1</option>
             <option value="value2">Label 2</option>
             </select>
@@ -91,17 +94,17 @@ function ScheduleDemoPage({onScheduledDemo}){
             {/* Date */}
             <input
             type="date"
-            className={`signup-input${errors.date ? 'error' : ''}`}
+            className={`demo-signup${errors.date ? 'error' : ''}`}
             {...register('date')}
             />
             {errors.date && <p className="error-message">{errors.date.message}</p>}
 
             {/* Time */}
             <select
-            className={`signup-input ${errors.time ? 'error' : ''}`}
+            className={`demo-signup ${errors.time ? 'error' : ''}`}
             {...register('time')}
             >
-            <option value="">Select a time...</option>
+            <option value="">Select A Demo Time...</option>
             <option value="09:00">9:00 AM</option>
             <option value="09:30">9:30 AM</option>
             <option value="10:00">10:00 AM</option>
@@ -122,8 +125,14 @@ function ScheduleDemoPage({onScheduledDemo}){
             </select>
             {errors.time && <p className="error-message">{errors.time.message}</p>}
 
+                <button type="submit" className="demo-signup">
+                    Schedule OptiTask Demo
+                </button>
 
+
+            </form>
         </div>
+
     )
 
 }
