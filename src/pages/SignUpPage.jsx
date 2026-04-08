@@ -1,59 +1,30 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
 function SignUpPage({ onSignUp }) {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
-    const [errors, setErrors] = useState({})
 
-
-    // Defines Validation Schema - The RuleBook
-
+    // Validation schema - The RuleBook
     const validationSchema = Yup.object({
         firstName: Yup.string()
-            .min(2, 'First name must be at least 2 characters')
-            .required('First name is required'),
+            .min(2, 'First name must be at least 2 characters'),
         lastName: Yup.string()
-            .min(2, 'Last name must be at least 2 characters')
-            .required('Last name is required'),
+            .min(2, 'Last name must be at least 2 characters'),
         email: Yup.string()
-            .email('Invalid email address')
-            .required('Email is required'),
+            .email('Invalid email address'),
         password: Yup.string()
-            .min(8, 'Password Must Be At least 8 Characters')
-            .required('Password Is Required')
+            .min(8, 'Password must be at least 8 characters')
     });
 
-    async function handleSubmit() {
-        // Clears Any Previous Errors
-        setErrors({});
+    // Sets Up Form With Validation
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(validationSchema)
+    });
 
-        try {
-            // Validate All Fields Are Correct
-            await validationSchema.validate(
-                { firstName, lastName, email, password },
-                { abortEarly: false } // Collect All The Errors Not Just The First One.
-            );
-
-            // If All Validation Is Good, This Will Advance You To Next Page
-            onSignUp({ firstName, lastName, email, password});
-
-
-       // This Catches All Errors.
-        } catch (validationErrors) {
-            const formattedErrors = {};
-
-            //For Each Loop That Loops Through All Errors.
-            validationErrors.inner.forEach((error) => {
-                formattedErrors[error.path] = error.message;
-            });
-            setErrors(formattedErrors);
-            //This Sets The Errors For The JSX.
-        }
+    // Submit handler - Called Only If Validation Passes
+    function onSubmit(data) {
+        onSignUp(data);
     }
-
 
     return (
         <div className="signup-page">
@@ -64,55 +35,54 @@ function SignUpPage({ onSignUp }) {
             <div className="signup-overlay">
                 <h1 className="signup-title">Create An OptiTask Account</h1>
 
-                {/* FIRST NAME INPUT */}
-                <input
-                    type="text"
-                    placeholder="First Name"
-                    className={`signup-input ${errors.firstName ? 'error' : ''}`}
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-                {/* Error Message */}
-                {errors.firstName && <p className="error-message">{errors.firstName}</p>}
+                <form onSubmit={handleSubmit(onSubmit)}>
+
+                    {/* FIRST NAME INPUT */}
+                    <input
+                        type="text"
+                        placeholder="First Name"
+                        className={`signup-input ${errors.firstName ? 'error' : ''}`}
+                        {...register('firstName')}
+                    />
+                    {/* FIRST NAME ERROR MESSAGE */}
+                    {errors.firstName && <p className="error-message">{errors.firstName.message}</p>}
 
 
-                {/* LAST NAME INPUT */}
-                <input
-                    type="text"
-                    placeholder="Last Name"
-                    className={`signup-input ${errors.lastName ? 'error' : ''}`}
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
-                {/* Error Message */}
-                {errors.lastName && <p className="error-message">{errors.lastName}</p>}
+                    {/* LAST NAME INPUT */}
+                    <input
+                        type="text"
+                        placeholder="Last Name"
+                        className={`signup-input ${errors.lastName ? 'error' : ''}`}
+                        {...register('lastName')}
+                    />
+                    {/* LAST NAME ERROR MESSAGE */}
+                    {errors.lastName && <p className="error-message">{errors.lastName.message}</p>}
 
+                    {/* EMAIL INPUT */}
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        className={`signup-input ${errors.email ? 'error' : ''}`}
+                        {...register('email')}
+                    />
+                    {/* EMAIL ERROR MESSAGE */}
+                    {errors.email && <p className="error-message">{errors.email.message}</p>}
 
-                {/* EMAIL INPUT */}
-                <input
-                    type="email"
-                    placeholder="Email"
-                    className={`signup-input ${errors.email ? 'error' : ''}`}
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                {/* Error Message */}
-                {errors.email && <p className="error-message">{errors.email}</p>}
+                    {/* PASSWORD INPUT */}
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className={`signup-input ${errors.password ? 'error' : ''}`}
+                        {...register('password')}
+                    />
+                    {/* PASSWORD INPUT ERROR MESSAGE */}
+                    {errors.password && <p className="error-message">{errors.password.message}</p>}
 
+                    <button type="submit" className="signup-button">
+                        Create Account
+                    </button>
 
-                {/* Password Input */}
-                <input
-                type="password"
-                placeholder="Password"
-                className={`signup-input ${errors.password ? 'error' : ''}`}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                />
-                {/* Error Message */}
-                {errors.password && <p className="error-message">{errors.password}</p>}
-
-
-                <button className="signup-button" onClick={handleSubmit}>Create Account</button>
+                </form>
             </div>
         </div>
     );

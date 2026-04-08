@@ -23,7 +23,7 @@ function HeroSection() {
                     The Future Of Home-Help Is Here.
                 </p>
 
-                <Link to="/request-hero" style={{textDecoration: "none"}}
+                <Link to="/figure03" style={{textDecoration: "none"}}
                       className="hero-button">Explore Figure 03 &nbsp; →</Link>
             </div>
         </section>
