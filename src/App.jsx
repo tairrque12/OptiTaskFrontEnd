@@ -10,6 +10,7 @@ import SignUpPage from './pages/SignUpPage.jsx';
 import './App.css';
 import ScheduleDemoPage from "./pages/ScheduleDemoPage.jsx";
 import Figure03 from "./pages/Figure03.jsx";
+import ManageReservation from "./pages/ManageReservation.jsx";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -29,6 +30,7 @@ function App() {
                     <Route path="/request-cta" element={<RequestRobot />} />
                     <Route path="/services-lp" element={<Optimus />} />
                     <Route path="/figure03" element={<Figure03 />} />
+                    <Route path="/manageReservation" element={<ManageReservation />} />
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -26,7 +26,7 @@ const Figure03 = () => {
             id: 4,
             video: "/videos/RequestFigure03.mp4",
             title: "Ready To Bring Figure 03 Home?",
-            description: <Link to="/request-cta" className="cta-button">RESERVE FIGURE03 →</Link>
+            description: <Link to="/request-cta" className="cta-button">REQUEST FIGURE03 →</Link>
         }
     ];
 
