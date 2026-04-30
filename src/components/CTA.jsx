@@ -9,7 +9,7 @@ function CallToAction() {
                 loop
                 playsInline
             >
-                <source src="/videos/CTA-Video.mp4" type="video/mp4" />
+                <source src="/videos/NEWCTA.mp4" type="video/mp4" />
             </video>
 
             <div className="cta-overlay"></div>

@@ -714,6 +714,15 @@ form {
     letter-spacing: 4px;
     margin-bottom: 10px;
 }
+.demo-card-header{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: #fff;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    margin-top: 70px;
+}
 
 .demo-signup {
     width: 20%;
@@ -724,6 +733,7 @@ form {
     color: #fff;
     font-size: 14px;
     box-sizing: border-box;
+    margin-top: 40px;
 }
 
 .demo-signup:focus {
@@ -792,6 +802,283 @@ form {
     top: 20%;              /* Move it up - adjust this value */
     right: 1%;
 }
+.reserve-page {
+    min-height: 100vh;
+    background-color: #0a0a0a;
+    color: #fff;
+    padding: 40px 80px;
+}
 
+.reserve-header h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
 
+.reserve-header p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.step-container {
+    border: 1px solid #222;
+    border-radius: 16px;
+    background-color: #0d0d0d;
+    padding: 30px;
+    margin-bottom: 24px;
+}
+
+.step-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #C9A84C;
+    margin-bottom: 20px;
+}
+
+.task-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.task-card {
+    background-color: #000;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.task-card:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+}
+
+.task-card-selected {
+    border-color: #C9A84C;
+    background-color: #111;
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.1);
+}
+
+.task-card-name {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 6px;
+}
+
+.task-card-price {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+.selected-task-display {
+    border: 1px solid #333;
+    border-radius: 12px;
+    background-color: #000;
+    padding: 16px;
+    margin-bottom: 20px;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.selected-task-display p {
+    margin: 4px 0;
+}
+
+.robot-card {
+    border: 1px solid #333;
+    border-radius: 12px;
+    background-color: #000;
+    padding: 20px;
+}
+
+.robot-card h3 {
+    color: #C9A84C;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+}
+
+.robot-card p {
+    margin: 4px 0;
+}
+
+.robot-card .robot-description {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+}
+
+.confirm-robot-btn {
+    margin-top: 16px;
+    padding: 10px 24px;
+    background-color: #C9A84C;
+    color: #000;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.confirm-robot-btn:hover {
+    background-color: #b8973f;
+}
+
+.duration-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.duration-btn {
+    padding: 14px;
+    background-color: #000;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.duration-btn:hover {
+    border-color: rgba(201, 168, 76, 0.4);
+}
+
+.duration-btn-selected {
+    border-color: #C9A84C;
+    background-color: #111;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.summary-item {
+    border: 1px solid #333;
+    border-radius: 12px;
+    background-color: #000;
+    padding: 16px;
+}
+
+.summary-item-label {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+    margin: 0 0 6px;
+}
+
+.summary-item-value {
+    font-weight: 500;
+    margin: 0;
+}
+
+.total-box {
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    background-color: rgba(201, 168, 76, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+.total-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    margin: 0 0 4px;
+}
+
+.total-value {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #C9A84C;
+    margin: 0;
+}
+
+.location-input {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #000;
+    border: 1px solid #333;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.location-input:focus {
+    outline: none;
+    border-color: #C9A84C;
+}
+
+.confirm-reservation-btn {
+    width: 100%;
+    margin-top: 24px;
+    padding: 16px;
+    background-color: #C9A84C;
+    color: #000;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.confirm-reservation-btn:hover {
+    background-color: #b8973f;
+}
+
+.success-container {
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    background-color: rgba(74, 222, 128, 0.1);
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.success-container h2 {
+    color: #4ade80;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.success-container .success-subtitle {
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.success-total {
+    color: #4ade80;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 16px;
+}
+.request-robot-heading{
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-top: 16px;
+}
+.demo-card-header{
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-top: 50px;
+}
 
